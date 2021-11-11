@@ -7,6 +7,8 @@ import React, { Component } from 'react';
 
 class CampsiteInfo extends Component { // Create a renderSelectedCampsite method that will render the selected campsite
     constructor(props, campsite) {
+        super(props);
+        // not sure if this is the best way to do this, or if this right?
         this.campsite = {
             campsite: null // Set the campsite to null
             // if campsite is not null, set the campsite to the campsite object

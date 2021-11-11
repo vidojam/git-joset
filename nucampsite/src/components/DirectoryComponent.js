@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
+// Make sure to import the CampsiteInfo component into DirectoryComponent.js.
+import CampsiteInfo from './CampsiteInfoComponent';
+
 
 class Directory extends Component {
     constructor(props) {
@@ -44,18 +47,22 @@ class Directory extends Component {
                 </div>
             );
         });
+        const newLocal = this;
+        // Pass the this.state.selectedCampsite object as props 
+        // to this CampsiteInfo component, using the attribute name of "campsite". 
+
+        // Replace it all with the CampsiteInfo component
+        // Pass the this.state.selectedCampsite object as props to this CampsiteInfo component, using the attribute name of "campsite". 
         return (
             <div className="container">
                 <div className="row">
                     {directory}
+                    <CampsiteInfo
+                        campsite={this.props.selectedCampsite}
+                    />
                 </div>
-                <div className="row">
-                    <div className="col-md-5 m-1">
-                        {this.renderSelectedCampsite(this.state.selectedCampsite)}
-                    </div>
-                </div>
-            </div>
 
+            </div>
         );
     }
 }
