@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
+
+// delete any imports that are not being used
 
 // Make sure to import the CampsiteInfo component into DirectoryComponent.js.
 import CampsiteInfo from './CampsiteInfoComponent';
@@ -10,7 +12,7 @@ class Directory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectCampsite: null
+            selectedCampsite: null // or selectCampsite
         };
     };
 
@@ -18,21 +20,6 @@ class Directory extends Component {
         this.setState({ selectedCampsite: campsite });
     }
 
-    renderSelectedCampsite(campsite) {
-        if (campsite) {
-            return (
-                <Card>
-                    <CardImg top src={campsite.image} alt={campsite.name} />
-                    <CardBody>
-                        <CardTitle> {campsite.image} </CardTitle>
-                        <CardText> {campsite.description} </CardText>
-                    </CardBody>
-                </Card>
-
-            )
-        }
-        return <div />;
-    }
 
     render() {
         const directory = this.props.campsites.map(campsite => {
@@ -47,7 +34,7 @@ class Directory extends Component {
                 </div>
             );
         });
-        const newLocal = this;
+
         // Pass the this.state.selectedCampsite object as props 
         // to this CampsiteInfo component, using the attribute name of "campsite". 
 
@@ -58,7 +45,7 @@ class Directory extends Component {
                 <div className="row">
                     {directory}
                     <CampsiteInfo
-                        campsite={this.props.selectedCampsite}
+                        campsite={this.state.selectedCampsite}
                     />
                 </div>
 

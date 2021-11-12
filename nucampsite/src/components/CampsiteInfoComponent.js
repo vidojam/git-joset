@@ -2,7 +2,8 @@
 // Create a class component named CampsiteInfo inside it, and export it as the default
 
 import React, { Component } from 'react';
-//import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+
 
 
 class CampsiteInfo extends Component { // Create a renderSelectedCampsite method that will render the selected campsite
@@ -15,17 +16,42 @@ class CampsiteInfo extends Component { // Create a renderSelectedCampsite method
         };
     };
 
-    render() { // Render the campsite info
+    renderCampsite(campsite) { // Render the campsite info
+        return (
+            <div className="col-md-5 m-1">
+                <Card>
+                    <CardImg top src={campsite.image} alt={campsite.name} />
+                    <CardBody>
+                        <CardTitle> {campsite.image} </CardTitle>
+                        <CardText> {campsite.description} </CardText>
+                    </CardBody>
+                </Card>
+            </div>
+
+        )
+    };
+
+    // In CampsiteInfoComponent.js, in the CampsiteInfo component's render() method, 
+    // inside the empty div with the row class you set up earlier, 
+    // call the renderCampsite method and pass the campsite to it. Remember to use this where appropriate. There will be two places you need to use this for this step.
+    render(props) { // Render the campsite info
         // can the campsite object be returned as truthy? return null if not
         if (this.campsite) { // If the campsite object is truthy, render the campsite info
             return (
-                <div className="row" />
+                <div className="row" onClick={() => this.renderCampsite(this.campsite)} />
             );
         }
         // If not, return an empty <div> with no classes applied to it.
-        return <div />;
+        return <div /> //onClick={() => this.onCampsiteSelect(campsite)} />;
     }
 }
+
+// double check this!!!
+/*
+const campsite = {   // Create a class component named CampsiteInfo inside it, and export it as the default
+    campsite: null
+};
+*/
 
 
 // Export the CampsiteInfo component

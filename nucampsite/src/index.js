@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'typeface-lobster';
 import 'typeface-open-sans'
 import App from './App';
-import CampsiteInfo from './components/CampsiteInfoComponent';
+//import CampsiteInfo from './components/CampsiteInfoComponent';
 
 ReactDOM.render(
   <React.StrictMode>
