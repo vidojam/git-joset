@@ -6,6 +6,10 @@ import CampsiteInfo from './components/CampsiteInfoComponent';
 import './App.css';
 import { CAMPSITES } from './shared/campsites'
 
+// app to build card list 
+
+// each component will have a toggle thing 
+
 
 
 class App extends Component {
@@ -25,7 +29,7 @@ class App extends Component {
           </div>
         </Navbar>
         <Directory campsites={this.state.campsites} />
-        <CampsiteInfo campsites={this.state.campsites[0]} />
+        <CampsiteInfo campsite={this.state.campsites[0]} />
       </div>
     );
   }
