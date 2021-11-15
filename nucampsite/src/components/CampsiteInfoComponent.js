@@ -1,61 +1,66 @@
-
-// Create a class component named CampsiteInfo inside it, and export it as the default
-
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 
-// Create a class component named CampsiteInfo inside it, and export it as the default
-class CampsiteInfo extends Component { // Create a renderSelectedCampsite method that will render the selected campsite
+
+ 
+class CampsiteInfo extends Component { 
+    
     constructor(props) {
-        super(props);
-        // not sure if this is the best way to do this, or if this right?
-        this.campsite = {
-            campsite: null // Set the campsite to null
-            // if campsite is not null, set the campsite to the campsite object
+        super(props)
+        this.state = {
+            campsite:null,
         };
-    };
+    }  
 
-    // change the state somewhere 
-
-    // In CampsiteInfoComponent.js, in the CampsiteInfo component's render() method,
-    renderCampsite(campsite) { // Render the campsite info
+  
+    renderComments(comments) {
+          
+        if (comments) {   
+            return (
+                <div className = "col-md-5 m-1">
+                    <h4>Comments</h4> 
+                      {comments.map(comment => {
+                        <div key={comment.id}>
+                            <p>{comment.text}<br/>
+                             {comment.author}{comment.rating}{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
+                          </p>
+                        </div>;
+                       })}
+                 </div>                              
+            )
+        }        
         return (
+        <div />  
+        )
+    }
+
+    renderCampsite(campsite){
+        return(
             <div className="col-md-5 m-1" >
                 <Card>
                     <CardImg top src={campsite.image} alt={campsite.name} />
                     <CardBody>
-                        <CardTitle> {campsite.image} </CardTitle>
+                        <CardTitle> {campsite.name} </CardTitle>
                         <CardText> {campsite.description} </CardText>
                     </CardBody>
                 </Card>
             </div>
-
         )
-    };
+    }
 
-    // In CampsiteInfoComponent.js, in the CampsiteInfo component's render() method, 
-    // inside the empty div with the row class you set up earlier, 
-    // call the renderCampsite method and pass the campsite to it. Remember to use this where appropriate. There will be two places you need to use this for this step.
-    render(props) { // Render the campsite info
-        // can the campsite object be returned as truthy? return null if not
-        if (this.props.campsite) { // If the campsite object is truthy, render the campsite info
+    render(props) {  
+        
+        if (this.props.campsite) {      
             return (
-                <div className="row" onClick={() => this.renderCampsite(this.campsite)} />
-            );
-        }
-        // If not, return an empty <div> with no classes applied to it.
-        return <div /> //onClick={() => this.onCampsiteSelect(campsite)} />;
+             <div className="row">     
+                {this.renderCampsite(this.props.campsite)} 
+                {this.renderComments(this.props.campsite.comments)}
+            </div>
+            )} 
+        return <div />         
     }
 }
 
-// double check this!!!
-/*
-const campsite = {   // Create a class component named CampsiteInfo inside it, and export it as the default
-    campsite: null
-};
-*/
 
-
-// Export the CampsiteInfo component
 export default CampsiteInfo;
