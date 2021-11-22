@@ -14,7 +14,7 @@ function About(props) {
         );
     });
 
-function RenderPartner(partner) {
+function RenderPartner({partner}) {
     if (partner) {
         return (
             <React.Fragment>
@@ -23,8 +23,8 @@ function RenderPartner(partner) {
                 <Media heading>{partner.name}</Media>
                 {partner.description}
             </React.Fragment>   
-      );  
-   }  
+        );  
+    }  
 } 
 
 
