@@ -1,7 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { createStore, combineReducers } from 'redux';
 import { Campsites } from './campsites';
 import { Comments } from './comments';
 import { Partners } from './partners';
